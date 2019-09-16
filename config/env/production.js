@@ -48,7 +48,8 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-postgresql',
-      url: 'postgresql://postgres:postgre@localhost:5432/flames',
+      // url: 'postgresql://postgres:postgre@localhost:5432/flames',
+      url: 'postgres://cfewpqnj:lVOgdMAhqnXGZtQuYUl1bkTPsDjeFbLU@satao.db.elephantsql.com:5432/cfewpqnj',
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------

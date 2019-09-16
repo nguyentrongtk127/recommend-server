@@ -53,7 +53,8 @@ module.exports.datastores = {
     // adapter: 'sails-mongo',
     // url: 'mongodb://root@localhost/flames'
     adapter: 'sails-postgresql',
-    url: 'postgresql://postgres:postgre@localhost:5432/flames',
+    // url: 'postgresql://postgres:postgre@localhost:5432/flames',
+    url: 'postgres://cfewpqnj:lVOgdMAhqnXGZtQuYUl1bkTPsDjeFbLU@satao.db.elephantsql.com:5432/cfewpqnj',
   },
 
 
