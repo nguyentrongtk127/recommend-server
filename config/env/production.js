@@ -47,6 +47,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
+      adapter: 'sails-postgresql',
+      url: 'postgresql://postgres:postgre@localhost:5432/flames',
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -148,9 +150,10 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allRoutes: true,
+      allowOrigins: '*',
+      allowCredentials: false,
+      allowRequestHeaders: 'content-type,Authorization'
     },
 
   },
@@ -255,7 +258,10 @@ module.exports = {
     //   'https://staging.example.com',
     // ],
 
-
+    onlyAllowOrigins: [
+      'https://example.com',
+      'https://staging.example.com',
+    ],
     /***************************************************************************
     *                                                                          *
     * If you are deploying a cluster of multiple servers and/or processes,     *
@@ -322,7 +328,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-    // trustProxy: true,
+    trustProxy: true,
 
   },
 
