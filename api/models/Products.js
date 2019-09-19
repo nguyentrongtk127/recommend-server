@@ -14,9 +14,9 @@ module.exports = {
       required: true,
       columnName: 'product_id',
     },
-    name: {
+    code: {
       type: 'string',
-      columnName: 'Name'
+      columnName: 'code'
     },
     category1: {
       type: 'string',
@@ -42,8 +42,15 @@ module.exports = {
       type: 'string',
       columnName: 'cn3'
     },
-    href: {
+    image: {
       type: 'string'
+    },
+    price: {
+      type: 'string'
+    },
+    fullName: {
+      type: 'string',
+      columnName: 'fullname'
     },
     recommends: {
       collection: 'recommendators',

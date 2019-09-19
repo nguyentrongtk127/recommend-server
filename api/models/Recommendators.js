@@ -9,6 +9,10 @@ module.exports = {
   attributes: {
     createdAt: false,
     updatedAt: false,
+    id: {
+      type: 'number',
+      required: true
+    },
     product_id: {
       model: 'products',
     },
