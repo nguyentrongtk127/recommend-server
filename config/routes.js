@@ -13,4 +13,5 @@ module.exports.routes = {
   'post /products/csv': 'ProductsController.importCSV',
   'get /recommendators/:product_id': 'RecommendatorsController.getProductAndRecommends',
   'post /recommendators/csv': 'RecommendatorsController.importCSV',
+  'get /usersproducts' : 'UsersProducts.getListProduct'
 };

@@ -15,7 +15,7 @@ module.exports = {
       type: 'string',
     },
     product_id: {
-      type: 'number'
+      model: 'products'
     },
     count: {
       type: 'number',

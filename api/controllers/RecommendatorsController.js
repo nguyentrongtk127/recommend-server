@@ -12,9 +12,15 @@ module.exports = {
     const { usercode } = req.query;
     const product_id = req.params.product_id;
     const product = await Recommendators.find({
-      where: { product_id },
+      where: { product_id :req.params.product_id},
       limit: 1,
     }).populate(['product_id', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p10']);
+    if(!product[0]) {
+      return res.send({
+        product: null,
+        recommends: []
+      });
+    }
     let result = {
       product: product[0].product_id,
       recommends: []
@@ -37,13 +43,10 @@ module.exports = {
     });
     res.send(result);
     if (usercode) {
-      console.log(usercode,product_id)
       UsersProducts.findOrCreate({usercode,product_id}, {usercode,product_id})
         .exec((err, newOrExistingRecord, wasCreated) => {
           if (err) {
-            console.log(err);
           } else if(!wasCreated) {
-            console.log(newOrExistingRecord);
             UsersProducts.updateOne({ usercode,product_id })
             .set({
               count: newOrExistingRecord.count +1
@@ -54,7 +57,6 @@ module.exports = {
         });
     }
   },
-
 
   importCSV: (req, res) => {
     req.file('recommendators').upload({
@@ -74,7 +76,6 @@ module.exports = {
             });
             return e;
           });
-          console.log(jsonObj);
           return Recommendators.createEach(jsonObj);
         })
         .then(() => {
