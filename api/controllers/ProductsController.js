@@ -8,6 +8,39 @@ const sails = require('sails');
 const csvtojson = require('csvtojson');
 
 module.exports = {
+  getCategoryProducts: (req, res) => {
+    Products.find({})
+      .then((result) => {
+        const data = [];
+        result.forEach(e => {
+          let indexData = data.findIndex(i => {
+            return e.category3 === i.category;
+          });
+          if (indexData === -1) {
+            data.push(
+              {
+                category: e.category3,
+                categoryName: e.categoryName3,
+                products: [
+                  { ...e }
+                ]
+              }
+            );
+          } else {
+            let indexProd = data[indexData].products.findIndex(i => {
+              return i.id === e.id;
+            });
+            if (indexProd === -1) {
+              data[indexData].products.push({ ...e });
+            }
+          }
+        });
+        return res.send(data);
+      })
+      .catch((error) =>{
+        res.send({ message: error });
+      });
+  },
   getListProduct: async (req, res) => {
     const { page = 1, size = 10 } = req.query;
     const [data, count] = await Promise.all([

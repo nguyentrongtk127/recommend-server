@@ -9,6 +9,7 @@
  */
 
 module.exports.routes = {
+  'get /categorys/products': 'ProductsController.getCategoryProducts',
   'get /products': 'ProductsController.getListProduct',
   'post /products/csv': 'ProductsController.importCSV',
   'get /recommendators/:product_id': 'RecommendatorsController.getProductAndRecommends',
